@@ -1,7 +1,16 @@
 import React from "react";
 
+import { Navbar } from "@components";
+
+import { Global } from "./styled";
+
 const App = () => {
-  return <p>Hello from App!</p>;
+  return (
+    <>
+      <Global />
+      <Navbar />
+    </>
+  );
 };
 
 export default App;
