@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar } from "@components";
+import { Navbar, Header } from "@components";
 
 import { Global } from "./styled";
 
@@ -9,6 +9,7 @@ const App = () => {
     <>
       <Global />
       <Navbar />
+      <Header />
     </>
   );
 };
