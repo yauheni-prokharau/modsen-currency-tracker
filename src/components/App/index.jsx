@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar, Header } from "@components";
+import { Navbar, Header, LastUpdated } from "@components";
 
 import { Global } from "./styled";
 
@@ -10,6 +10,7 @@ const App = () => {
       <Global />
       <Navbar />
       <Header />
+      <LastUpdated />
     </>
   );
 };
