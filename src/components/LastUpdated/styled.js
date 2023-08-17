@@ -18,6 +18,7 @@ export const TimeWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 50px 0px;
 `;
 
 export const Text = styled.p`
