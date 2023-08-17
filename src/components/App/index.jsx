@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar, Header, LastUpdated, Stocks } from "@components";
+import { Navbar, Header, LastUpdated, CardHolder } from "@components";
 
 import { Global } from "./styled";
 
@@ -11,7 +11,7 @@ const App = () => {
       <Navbar />
       <Header />
       <LastUpdated />
-      <Stocks />
+      <CardHolder />
     </>
   );
 };

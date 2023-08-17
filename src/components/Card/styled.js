@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CardWrapper = styled.div`
   display: flex;
   width: 520px;
+  height: 152.5px;
   padding: 30px 100px 30px 32px;
   align-items: center;
   gap: 30px;
@@ -21,12 +22,12 @@ export const CardImage = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 8px;
-  background-color: rgba(44, 77, 84, 1);
+  background-color: ${(props) => props.color};
 `;
 
 export const CardText = styled.p`
   width: 279.287px;
-  color: #d9d9d9;
+  color: rgba(217, 217, 217, 1);
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
