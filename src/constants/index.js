@@ -94,3 +94,12 @@ export const quotesData = [
     color: "rgba(91, 44, 43, 1)",
   },
 ];
+
+export const footerItems = {
+  name: "Modsen Currency Tracker",
+  quote:
+    "Since then, the company has grown organically to. Starsup is the world's largest trading platform, with $12 billion worth of currency trading and 500,000 tickets sold daily to tens of thousands of traders worldwide.",
+  mainLinks: ["General", "Product", "Community"],
+  subLinks: ["Market", "Sparks", "Ideas", "Service", "Snaps", "Streams"],
+  copyright: "Startsup © 2023-2024, All Rights Reserved",
+};
