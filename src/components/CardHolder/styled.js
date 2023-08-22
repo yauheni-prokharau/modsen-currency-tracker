@@ -10,6 +10,7 @@ export const CardHolderWrapper = styled.section`
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0px 120px;
+  margin-bottom: 40px;
 `;
 
 export const CardHolderTextWrapper = styled.div`

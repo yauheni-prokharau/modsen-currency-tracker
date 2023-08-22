@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const DotenvWebpackPlugin = require("dotenv-webpack");
 
 module.exports = {
   mode: "development",
@@ -26,6 +27,9 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({ template: "./public/index.html" }),
     new CleanWebpackPlugin(),
+    new DotenvWebpackPlugin({
+      path: "./.env.local",
+    }),
   ],
   module: {
     rules: [
