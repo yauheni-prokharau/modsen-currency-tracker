@@ -12,7 +12,9 @@ export const CardWrapper = styled.div`
   background: rgba(32, 32, 37, 1);
   margin: 20px;
   cursor: pointer;
-  transition: border-radius 0.2s, box-shadow 0.3s;
+  transition:
+    border-radius 0.2s,
+    box-shadow 0.3s;
 
   &:hover {
     border-radius: 15px;
