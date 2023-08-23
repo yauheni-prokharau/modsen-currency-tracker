@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import diagram from "@assets/images/diagram.svg";
 import { footerItems } from "@constants";
@@ -32,33 +33,33 @@ const Footer = () => {
         <div>
           <LinksWrapper>
             <MainLinks>
-              <a href={`/${mainLinks[0].toLowerCase()}`}>{mainLinks[0]}</a>
+              <span>{mainLinks[0]}</span>
             </MainLinks>
             <SubLinks>
               {subLinks.slice(0, 2).map((link) => (
-                <a key={link} href={`/${link.toLowerCase()}`}>
+                <Link key={link} to={`/sublinks/${link.toLowerCase()}`}>
                   {link}
-                </a>
+                </Link>
               ))}
             </SubLinks>
             <MainLinks>
-              <a href={`/${mainLinks[1].toLowerCase()}`}>{mainLinks[1]}</a>
+              <span>{mainLinks[1]}</span>
             </MainLinks>
             <SubLinks>
               {subLinks.slice(2, 4).map((link) => (
-                <a key={link} href={`/${link.toLowerCase()}`}>
+                <Link key={link} to={`/sublinks/${link.toLowerCase()}`}>
                   {link}
-                </a>
+                </Link>
               ))}
             </SubLinks>
             <MainLinks>
-              <a href={`/${mainLinks[2].toLowerCase()}`}>{mainLinks[2]}</a>
+              <span>{mainLinks[2]}</span>
             </MainLinks>
             <SubLinks>
               {subLinks.slice(4).map((link) => (
-                <a key={link} href={`/${link.toLowerCase()}`}>
+                <Link key={link} to={`/sublinks/${link.toLowerCase()}`}>
                   {link}
-                </a>
+                </Link>
               ))}
             </SubLinks>
           </LinksWrapper>

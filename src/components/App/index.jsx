@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ErrorBoundary } from "@components";
-import { Home, Timeline, BankCard, Contato } from "@pages";
+import { Home, Timeline, BankCard, Contato, Stub } from "@pages";
 import { navbarItems } from "@constants";
 
 import { Global } from "./styled";
@@ -22,6 +22,7 @@ const App = () => {
           <Route path={timeline} element={<Timeline />} />
           <Route path={bankCard} element={<BankCard />} />
           <Route path={contato} element={<Contato />} />
+          <Route path={`${home}/sublinks/:sublink`} element={<Stub />} />
         </Routes>
       </BrowserRouter>
     </ErrorBoundary>

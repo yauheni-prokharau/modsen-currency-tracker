@@ -61,8 +61,7 @@ export const MainLinks = styled.div`
   flex-direction: row;
   gap: 20px;
 
-  a {
-    text-decoration: none;
+  span {
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
