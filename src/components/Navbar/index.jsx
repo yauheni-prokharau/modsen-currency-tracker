@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import diagram from "@assets/images/diagram.svg";
 import toogle from "@assets/images/toggle.png";
@@ -19,10 +20,10 @@ const Navbar = () => {
       </DiagramWrapper>
       <ListWrapper>
         {navbarItems.map((item) => {
-          const { id, name } = item;
+          const { id, name, path } = item;
           return (
             <li key={id}>
-              <a href="#">{name}</a>
+              <Link to={path}>{name}</Link>
             </li>
           );
         })}

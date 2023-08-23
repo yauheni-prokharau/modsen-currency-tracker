@@ -11,10 +11,10 @@ import yuan from "@assets/icons/Yuan.svg";
 import bitcoin from "@assets/icons/Bitcoin.svg";
 
 export const navbarItems = [
-  { id: 1, name: "Home" },
-  { id: 2, name: "Timeline" },
-  { id: 3, name: "Bank card" },
-  { id: 4, name: "Contato" },
+  { id: 1, name: "Home", path: "/" },
+  { id: 2, name: "Timeline", path: "/timeline" },
+  { id: 3, name: "Bank card", path: "/bankcard" },
+  { id: 4, name: "Contato", path: "/contato" },
 ];
 
 export const headerData = {
