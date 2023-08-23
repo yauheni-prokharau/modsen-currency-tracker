@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "@components";
+
+import { Card, Modal } from "@components";
 import { stocksData, quotesData } from "@constants";
 import { fetchCurrencyData } from "@api";
 import {
@@ -64,6 +65,19 @@ const CardHolder = () => {
     }
   }, []);
 
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (currency) => {
+    setSelectedCurrency(currency);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCurrency(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <main>
       <CardHolderContainer>
@@ -103,11 +117,18 @@ const CardHolder = () => {
                     ? "Loading..."
                     : `R$ ${fetchedRates[code]?.value.toFixed(5)}`
                 }
+                onClick={() => handleOpenModal(code)}
               />
             );
           })}
         </CardHolderWrapper>
       </CardHolderContainer>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        selectedCurrency={selectedCurrency}
+        exchangeRates={fetchedRates}
+      />
     </main>
   );
 };

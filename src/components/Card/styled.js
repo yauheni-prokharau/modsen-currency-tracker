@@ -11,6 +11,13 @@ export const CardWrapper = styled.div`
   border: 1px solid rgba(71, 71, 71, 1);
   background: rgba(32, 32, 37, 1);
   margin: 20px;
+  cursor: pointer;
+  transition: border-radius 0.2s, box-shadow 0.3s;
+
+  &:hover {
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(71, 71, 71, 0.5);
+  }
 `;
 
 export const CardContent = styled.div`

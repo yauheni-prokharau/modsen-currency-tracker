@@ -8,8 +8,8 @@ import {
   CardPercent,
 } from "./styled";
 
-const Card = ({ path, text, color, rate }) => (
-  <CardWrapper>
+const Card = ({ path, text, color, rate, onClick }) => (
+  <CardWrapper onClick={onClick}>
     <CardImage src={path} alt={text} color={color}></CardImage>
     <CardContent>
       <CardText>{text}</CardText>
