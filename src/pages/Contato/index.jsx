@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar, Header, LastUpdated, Footer } from "@components";
+import { Navbar, Header, LastUpdated, Footer, Contacts } from "@components";
 
 const Contato = () => {
   return (
@@ -8,6 +8,7 @@ const Contato = () => {
       <Navbar />
       <Header />
       <LastUpdated />
+      <Contacts />
       <Footer />
     </>
   );
