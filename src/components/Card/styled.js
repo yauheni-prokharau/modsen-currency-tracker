@@ -9,7 +9,7 @@ export const CardWrapper = styled.div`
   gap: 30px;
   border-radius: 8px;
   border: 1px solid rgba(71, 71, 71, 1);
-  background: rgba(32, 32, 37, 1);
+  background: ${({ theme }) => theme.background};
   margin: 20px;
   cursor: pointer;
   transition:
