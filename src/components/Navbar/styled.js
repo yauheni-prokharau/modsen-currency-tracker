@@ -37,13 +37,57 @@ export const ListWrapper = styled.ul`
     transition: border-color 0.3s ease-in-out;
 
     &:hover {
-      border-color: rgba(255, 255, 255, 1);
+      border-color: ${({ theme }) => theme.color};
     }
   }
 `;
 
-export const ToggleWrapper = styled.div`
-  img {
-    max-height: 60px;
+export const ToggleWrapper = styled.label`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const ToggleSlider = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 14px;
+  background: linear-gradient(
+    92deg,
+    rgba(0, 206, 44, 1) 0%,
+    rgba(174, 223, 35, 1) 49.26%,
+    rgba(163, 220, 0, 1) 100%
+  );
+  border-radius: 7px;
+  transition: background-color 0.3s ease;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.color};
+    left: 0;
+    top: -3px;
+    transition: transform 0.3s ease;
+  }
+`;
+
+export const ToggleInput = styled.input`
+  display: none;
+
+  &:checked + ${ToggleSlider} {
+    background: linear-gradient(
+      92deg,
+      rgba(0, 206, 44, 1) 0%,
+      rgba(174, 223, 35, 1) 49.26%,
+      rgba(163, 220, 0, 1) 100%
+    );
+
+    &:before {
+      transform: translateX(22px);
+    }
   }
 `;

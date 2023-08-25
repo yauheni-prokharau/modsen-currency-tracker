@@ -23,6 +23,7 @@ module.exports = {
       "@constants": path.resolve(__dirname, "src/constants"),
       "@pages": path.resolve(__dirname, "src/pages"),
       "@store": path.resolve(__dirname, "src/store"),
+      "@theme": path.resolve(__dirname, "src/theme"),
     },
   },
   plugins: [

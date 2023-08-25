@@ -1,18 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import diagram from "@assets/images/diagram.svg";
-import toogle from "@assets/images/toggle.png";
 import { navbarItems } from "@constants";
+import { toggleTheme } from "@store/reducers/themeSlice";
 
 import {
   NavbarWrapper,
   DiagramWrapper,
   ListWrapper,
   ToggleWrapper,
+  ToggleInput,
+  ToggleSlider,
 } from "./styled";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <NavbarWrapper>
       <DiagramWrapper>
@@ -29,7 +38,8 @@ const Navbar = () => {
         })}
       </ListWrapper>
       <ToggleWrapper>
-        <img src={toogle} alt="toogle" />
+        <ToggleInput type="checkbox" onClick={handleThemeToggle} />
+        <ToggleSlider />
       </ToggleWrapper>
     </NavbarWrapper>
   );

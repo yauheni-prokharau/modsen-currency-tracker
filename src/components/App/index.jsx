@@ -1,11 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { ErrorBoundary } from "@components";
+import { ErrorBoundary, Theme } from "@components";
 import { Home, Timeline, BankCard, Contato, Stub } from "@pages";
 import { navbarItems } from "@constants";
-
-import { Global } from "./styled";
 
 const App = () => {
   const { path: home } = navbarItems[0];
@@ -15,16 +13,17 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <Global />
-      <BrowserRouter>
-        <Routes>
-          <Route path={home} element={<Home />} />
-          <Route path={timeline} element={<Timeline />} />
-          <Route path={bankCard} element={<BankCard />} />
-          <Route path={contato} element={<Contato />} />
-          <Route path={`${home}/sublinks/:sublink`} element={<Stub />} />
-        </Routes>
-      </BrowserRouter>
+      <Theme>
+        <BrowserRouter>
+          <Routes>
+            <Route path={home} element={<Home />} />
+            <Route path={timeline} element={<Timeline />} />
+            <Route path={bankCard} element={<BankCard />} />
+            <Route path={contato} element={<Contato />} />
+            <Route path={`${home}/sublinks/:sublink`} element={<Stub />} />
+          </Routes>
+        </BrowserRouter>
+      </Theme>
     </ErrorBoundary>
   );
 };

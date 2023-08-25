@@ -21,7 +21,7 @@ export const CardHolderTextWrapper = styled.div`
 export const CardHolderText = styled.p`
   width: 123px;
   height: 43px;
-  color: rgba(255, 255, 255, 1);
+  color: ${({ theme }) => theme.color};
   font-size: 32px;
   font-style: normal;
   font-weight: 300;

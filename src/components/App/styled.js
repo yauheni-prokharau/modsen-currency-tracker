@@ -1,11 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: Poppins;
-  background-color: rgba(3, 3, 4, 1);
-  color: rgba(255, 255, 255, 1);
-}`;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.color};
+  }
+`;
