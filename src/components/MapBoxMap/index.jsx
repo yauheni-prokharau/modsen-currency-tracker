@@ -70,11 +70,14 @@ class MapBoxMap extends Component {
 
     if (banks && banks.length > 0) {
       const newMarkers = banks.map((bank) => {
-        const image = document.createElement("img");
-        image.src = mapMarker;
+        const markerElement = document.createElement("div");
+        markerElement.style.width = "40px";
+        markerElement.style.height = "40px";
+        markerElement.style.backgroundColor = "transparent";
+        markerElement.style.backgroundImage = `url(${mapMarker})`;
 
         const newMarker = new mapboxgl.Marker({
-          element: image,
+          element: markerElement,
         })
           .setLngLat([bank.longitude, bank.latitude])
           .setPopup(new mapboxgl.Popup().setHTML(`<h3>${bank.name}</h3>`))
