@@ -19,13 +19,16 @@ export const ModalContent = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
 
+  color: rgba(255, 255, 255, 1);
+
   * {
     margin: 10px;
     padding: 10px;
     background: rgba(32, 32, 37, 1);
     border-radius: 10px;
+    color: rgba(255, 255, 255, 1);
   }
-`;
+};`;
 
 export const ModalCloseButton = styled.button`
   position: absolute;

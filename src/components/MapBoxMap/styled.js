@@ -26,6 +26,7 @@ export const StyledInput = styled.input`
   font-size: 16px;
   outline: none;
   margin-bottom: 40px;
+  color: rgba(158, 158, 158, 1);
 `;
 
 export const StyledList = styled.ul`
@@ -47,6 +48,7 @@ export const StyledListItem = styled.li`
   padding: 8px;
   border-bottom: 1px solid rgba(204, 204, 204, 0.9);
   background: rgba(27, 32, 40, 1);
+  color: rgba(158, 158, 158, 1);
   cursor: pointer;
 
   &:last-child {
