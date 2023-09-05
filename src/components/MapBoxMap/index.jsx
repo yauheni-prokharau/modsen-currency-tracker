@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { quotesData } from "@constants";
+import { quotesData, bankData } from "@constants";
+import mapMarker from "@assets/images/mapMarker.svg";
 
 import {
   StyledInputContainer,
@@ -21,9 +22,9 @@ class MapBoxMap extends Component {
     this.state = {
       searchInput: "",
       searchResults: [],
+      markers: [],
     };
 
-    this.searchQuotes = this.searchQuotes.bind(this);
     this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
   }
 
@@ -62,6 +63,34 @@ class MapBoxMap extends Component {
     this.searchQuotes(value);
   }
 
+  createMarkers(currency) {
+    this.state.markers.forEach((marker) => marker.remove());
+
+    const banks = bankData[currency];
+
+    if (banks && banks.length > 0) {
+      const newMarkers = banks.map((bank) => {
+        const image = document.createElement("img");
+        image.src = mapMarker;
+
+        const newMarker = new mapboxgl.Marker({
+          element: image,
+        })
+          .setLngLat([bank.longitude, bank.latitude])
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${bank.name}</h3>`))
+          .addTo(this.map);
+
+        return newMarker;
+      });
+
+      this.setState({
+        searchInput: "",
+        searchResults: [],
+        markers: newMarkers,
+      });
+    }
+  }
+
   render() {
     const { searchInput, searchResults } = this.state;
 
@@ -78,7 +107,10 @@ class MapBoxMap extends Component {
           {searchInput && (
             <StyledList>
               {searchResults.map((result) => (
-                <StyledListItem key={result.id}>
+                <StyledListItem
+                  key={result.id}
+                  onClick={() => this.createMarkers(result.code)}
+                >
                   {result.text} ({result.code})
                 </StyledListItem>
               ))}
