@@ -80,7 +80,7 @@ const CardHolder = () => {
 
   return (
     <main>
-      <CardHolderContainer>
+      <CardHolderContainer data-cy="cardHolder">
         <CardHolderTextWrapper>
           <CardHolderText>Stocks</CardHolderText>
           <CardHolderStrip />

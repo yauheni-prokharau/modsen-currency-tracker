@@ -19,7 +19,7 @@ const Footer = () => {
   const { name, quote, mainLinks, subLinks, copyright } = footerItems;
 
   return (
-    <FooterContainer>
+    <FooterContainer data-cy="footer">
       <FooterWrapper>
         <div>
           <DiagramWrapper>

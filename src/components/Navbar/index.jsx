@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <NavbarWrapper>
+    <NavbarWrapper data-cy="navbar">
       <DiagramWrapper>
         <img src={diagram} alt="diagram" />
       </DiagramWrapper>
@@ -37,7 +37,7 @@ const Navbar = () => {
           );
         })}
       </ListWrapper>
-      <ToggleWrapper>
+      <ToggleWrapper data-cy="toggleTheme">
         <ToggleInput type="checkbox" onClick={handleThemeToggle} />
         <ToggleSlider />
       </ToggleWrapper>

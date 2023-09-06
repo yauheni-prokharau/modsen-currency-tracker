@@ -37,9 +37,11 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
   }
 
   return ReactDOM.createPortal(
-    <ModalOverlay onClick={handleModalOverlayClick}>
+    <ModalOverlay onClick={handleModalOverlayClick} data-cy="modal">
       <ModalContent>
-        <ModalCloseButton onClick={onClose}>Close ❌</ModalCloseButton>
+        <ModalCloseButton onClick={onClose} data-cy="closeModal">
+          Close ❌
+        </ModalCloseButton>
         <h2>Currency Converter 💱</h2>
         <p>From: {selectedCurrency}</p>
         <select value={targetCurrency} onChange={handleCurrencyChange}>

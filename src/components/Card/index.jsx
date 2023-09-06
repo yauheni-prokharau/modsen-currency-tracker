@@ -9,7 +9,7 @@ import {
 } from "./styled";
 
 const Card = ({ path, text, color, rate, onClick }) => (
-  <CardWrapper onClick={onClick}>
+  <CardWrapper onClick={onClick} data-cy="card">
     <CardImage src={path} alt={text} color={color}></CardImage>
     <CardContent>
       <CardText>{text}</CardText>

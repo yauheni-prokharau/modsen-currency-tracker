@@ -75,6 +75,7 @@ class MapBoxMap extends Component {
         markerElement.style.height = "40px";
         markerElement.style.backgroundColor = "transparent";
         markerElement.style.backgroundImage = `url(${mapMarker})`;
+        markerElement.setAttribute("data-cy", "marker");
 
         const newMarker = new mapboxgl.Marker({
           element: markerElement,
@@ -98,10 +99,11 @@ class MapBoxMap extends Component {
     const { searchInput, searchResults } = this.state;
 
     return (
-      <section>
+      <section data-cy="mapBoxMap">
         <StyledTitle>Search currency in the bank</StyledTitle>
         <StyledInputContainer>
           <StyledInput
+            data-cy="targetCurrency"
             type="text"
             placeholder="Currency search..."
             value={searchInput}
@@ -113,6 +115,7 @@ class MapBoxMap extends Component {
                 <StyledListItem
                   key={result.id}
                   onClick={() => this.createMarkers(result.code)}
+                  data-cy="targetCurrencyItem"
                 >
                   {result.text} ({result.code})
                 </StyledListItem>

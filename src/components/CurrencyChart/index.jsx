@@ -104,12 +104,13 @@ class CurrencyChart extends Component {
 
   render() {
     return (
-      <ChartSection>
+      <ChartSection data-cy="currencyChart">
         <ButtonWrapper>
           {currencyData.map((currency, index) => (
             <CurrencyButton
               key={index}
               onClick={() => this.handleCurrencyChange(index)}
+              data-cy="currencyButton"
             >
               <ButtonImage
                 src={currency.path}

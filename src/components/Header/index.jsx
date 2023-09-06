@@ -15,7 +15,7 @@ const Header = () => {
   const { name, subname, quote } = headerData;
 
   return (
-    <header>
+    <header data-cy="header">
       <SectionWrapper>
         <TextWrapper>
           <Title>{name}</Title>

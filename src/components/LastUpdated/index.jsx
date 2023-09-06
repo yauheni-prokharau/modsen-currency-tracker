@@ -18,7 +18,7 @@ const LastUpdated = () => {
   };
 
   return (
-    <TimeWrapper>
+    <TimeWrapper data-cy="lastUpdated">
       <CircleWrapper src={circle} alt="circle" />
       <Text>Last updated at {formatTime(lastUpdated)}</Text>
     </TimeWrapper>
