@@ -1,8 +1,8 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const DotenvWebpackPlugin = require("dotenv-webpack");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "production",
@@ -24,11 +24,20 @@ module.exports = {
     },
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+    new webpack.DefinePlugin(
+      Object.keys(process.env).reduce(
+        (result, key) => ({
+          ...result,
+          [`process.env.${key}`]: JSON.stringify(process.env[key]),
+        }),
+        {}
+      )
+    ),
     new HTMLWebpackPlugin({ template: "./public/index.html" }),
     new CleanWebpackPlugin(),
-    new DotenvWebpackPlugin({
-      path: "./.env.production",
-    }),
     new ESLintWebpackPlugin(),
   ],
   module: {
