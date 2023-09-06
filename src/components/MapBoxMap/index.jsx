@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { quotesData, bankData } from "@constants";
+import { quotesData, bankData, defaultLocation } from "@constants";
 import mapMarker from "@assets/images/mapMarker.svg";
 
 import {
@@ -34,7 +34,7 @@ class MapBoxMap extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [30.3449, 53.8925],
+      center: [defaultLocation.longitude, defaultLocation.latitude],
       zoom: 10,
     });
   }

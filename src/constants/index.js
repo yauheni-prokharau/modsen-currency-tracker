@@ -281,6 +281,11 @@ export const bankData = {
   ],
 };
 
+export const defaultLocation = {
+  latitude: 53.8925,
+  longitude: 30.3449,
+};
+
 export const currencyData = [
   {
     currency: "Bitcoin (BTC)",
