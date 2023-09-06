@@ -27,7 +27,7 @@ module.exports = {
     new HTMLWebpackPlugin({ template: "./public/index.html" }),
     new CleanWebpackPlugin(),
     new DotenvWebpackPlugin({
-      path: "./.env.local",
+      path: "./.env.production",
     }),
     new ESLintWebpackPlugin(),
   ],
