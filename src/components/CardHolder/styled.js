@@ -11,6 +11,10 @@ export const CardHolderWrapper = styled.section`
   flex-wrap: wrap;
   padding: 0px 120px;
   margin-bottom: 40px;
+
+  @media (max-width: 1600px) {
+    justify-content: center;
+  }
 `;
 
 export const CardHolderTextWrapper = styled.div`

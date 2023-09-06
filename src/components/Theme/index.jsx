@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "@theme";
 
+import { lightTheme, darkTheme } from "@theme";
 import { Global } from "@components/App/styled";
 
 const Theme = ({ children }) => {

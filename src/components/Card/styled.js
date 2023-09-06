@@ -20,6 +20,10 @@ export const CardWrapper = styled.div`
     border-radius: 15px;
     box-shadow: 0 0 50px rgba(71, 71, 71, 0.5);
   }
+
+  @media (max-width: 1600px) {
+    width: 100%;
+  }
 `;
 
 export const CardContent = styled.div`

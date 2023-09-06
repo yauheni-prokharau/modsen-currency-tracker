@@ -6,9 +6,15 @@ export const FooterContainer = styled.footer`
 `;
 
 export const FooterWrapper = styled.section`
-  padding: 0px 120px;
+  padding: 0px 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  @media (min-width: 1600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 120px;
+  }
 `;
 
 export const DiagramWrapper = styled.div`
@@ -36,11 +42,14 @@ export const DiagramWrapper = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  @media (min-width: 1600px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const Quote = styled.div`
-  width: 482px;
-  height: 227.577px;
+  width: 100%;
 
   p {
     font-family: Poppins;
@@ -53,12 +62,21 @@ export const Quote = styled.div`
 
 export const LinksWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  margin-top: 20px;
+  text-align: center;
+
+  @media (min-width: 1600px) {
+    flex-direction: row;
+    gap: 0;
+    margin-top: 0;
+  }
 `;
 
 export const MainLinks = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
 
   span {

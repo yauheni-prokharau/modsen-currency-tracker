@@ -9,7 +9,6 @@ import {
   Quote,
   Title,
   DiagramWrapper,
-  ImageWrapper,
 } from "./styled";
 
 const Header = () => {

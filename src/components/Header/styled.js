@@ -2,40 +2,57 @@ import styled from "styled-components";
 
 export const SectionWrapper = styled.section`
   width: 100%;
-  height: 461.027px;
   padding: 70px;
-  padding-left: 260px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background: linear-gradient(
     225deg,
     rgba(18, 44, 19, 1) 0%,
     rgba(36, 121, 64, 0) 100%
   );
+
+  @media (min-width: 1600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 260px;
+  }
 `;
 
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
   background-color: transparent;
+  margin-bottom: 20px;
+
+  @media (min-width: 1600px) {
+    text-align: right;
+    margin-bottom: 0;
+  }
 `;
 
 export const Quote = styled.p`
-  width: 389px;
-  height: 107px;
+  width: 100%;
   text-align: center;
   font-size: 25px;
   font-style: normal;
   font-weight: 300;
   line-height: 46.772px;
-  margin-left: 360px;
+  margin-bottom: 20px;
   background-color: transparent;
+
+  @media (min-width: 768px) {
+    width: auto;
+    text-align: right;
+    margin-bottom: 0;
+  }
 `;
 
 export const Title = styled.p`
-  width: 691.227px;
-  height: 124.606px;
+  width: 100%;
   flex-shrink: 0;
-  text-align: right;
   font-size: 76px;
   font-style: normal;
   font-weight: 600;
@@ -49,15 +66,26 @@ export const Title = styled.p`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (min-width: 1600px) {
+    width: auto;
+  }
 `;
 
 export const DiagramWrapper = styled.div`
-  width: 303.699px;
-  height: 345.712px;
-  margin-left: 30px;
+  margin-left: 0;
   background-color: transparent;
 
   img {
     background-color: transparent;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 1600px) {
+    width: 303.699px;
+    height: 345.712px;
+    margin-left: 30px;
+    margin: 0 auto;
   }
 `;
