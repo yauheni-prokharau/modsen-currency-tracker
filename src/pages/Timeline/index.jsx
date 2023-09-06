@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Navbar, Header, LastUpdated, Footer } from "@components";
+import {
+  Navbar,
+  Header,
+  LastUpdated,
+  CurrencyChart,
+  Footer,
+} from "@components";
 
 const Timeline = () => {
   return (
@@ -8,6 +14,7 @@ const Timeline = () => {
       <Navbar />
       <Header />
       <LastUpdated />
+      <CurrencyChart />
       <Footer />
     </>
   );
