@@ -12,3 +12,4 @@ export { default as Theme } from "./Theme";
 export { default as Contacts } from "./Contacts";
 export { default as MapBoxMap } from "./MapBoxMap";
 export { default as CurrencyChart } from "./CurrencyChart";
+export { default as Loader } from "./Loader";
