@@ -36,7 +36,10 @@ module.exports = {
         {}
       )
     ),
-    new HTMLWebpackPlugin({ template: "./public/index.html" }),
+    new HTMLWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./src/favicon.svg",
+    }),
     new CleanWebpackPlugin(),
     new ESLintWebpackPlugin(),
   ],

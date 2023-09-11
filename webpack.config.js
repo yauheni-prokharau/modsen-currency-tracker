@@ -28,7 +28,10 @@ module.exports = {
     },
   },
   plugins: [
-    new HTMLWebpackPlugin({ template: "./public/index.html" }),
+    new HTMLWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./src/favicon.svg",
+    }),
     new CleanWebpackPlugin(),
     new DotenvWebpackPlugin({
       path: "./.env.local",
