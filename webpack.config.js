@@ -25,12 +25,13 @@ module.exports = {
       "@pages": path.resolve(__dirname, "src/pages"),
       "@store": path.resolve(__dirname, "src/store"),
       "@theme": path.resolve(__dirname, "src/theme"),
+      "@utils": path.resolve(__dirname, "src/utils"),
     },
   },
   plugins: [
     new HTMLWebpackPlugin({
       template: "./public/index.html",
-      favicon: "./src/favicon.svg",
+      favicon: "./public/favicon.svg",
     }),
     new CleanWebpackPlugin(),
     new DotenvWebpackPlugin({

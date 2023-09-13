@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 
 import { ModalOverlay, ModalContent, ModalCloseButton } from "./styled";
 
 const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
   const [targetCurrency, setTargetCurrency] = useState("USD");
-  const [convertedAmount, setConvertedAmount] = useState(null);
-
-  const handleCurrencyChange = (event) => {
-    setTargetCurrency(event.target.value);
-    setConvertedAmount(null);
-  };
+  const [convertAmount, setConvertAmount] = useState(null);
 
   const convertCurrency = () => {
     const selectedRate = exchangeRates[selectedCurrency]?.value;
@@ -21,14 +17,21 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
     return "N/A";
   };
 
+  const handleCurrencyChange = (event) => {
+    setTargetCurrency(event.target.value);
+    setConvertAmount(null);
+  };
+
   const handleConvert = () => {
     const convertedValue = convertCurrency();
-    setConvertedAmount(convertedValue);
+    setConvertAmount(convertedValue);
   };
 
   const handleModalOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
       onClose();
+      setTargetCurrency("USD");
+      setConvertAmount(null);
     }
   };
 
@@ -39,7 +42,10 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
   return ReactDOM.createPortal(
     <ModalOverlay onClick={handleModalOverlayClick} data-cy="modal">
       <ModalContent>
-        <ModalCloseButton onClick={onClose} data-cy="closeModal">
+        <ModalCloseButton
+          onClick={handleModalOverlayClick}
+          data-cy="closeModal"
+        >
           Close ❌
         </ModalCloseButton>
         <h2>Currency Converter 💱</h2>
@@ -52,15 +58,22 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
           ))}
         </select>
         <button onClick={handleConvert}>Convert</button>
-        {convertedAmount !== null && (
+        {convertAmount !== null && (
           <p>
-            Converted value: {convertedAmount} {targetCurrency}
+            Converted value: {convertAmount} {targetCurrency}
           </p>
         )}
       </ModalContent>
     </ModalOverlay>,
     document.getElementById("root")
   );
+};
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  selectedCurrency: PropTypes.string,
+  exchangeRates: PropTypes.object.isRequired,
 };
 
 export default Modal;

@@ -16,14 +16,15 @@ import {
   CardHolderWrapper,
   CardHolderTextWrapper,
   CardHolderText,
-  CardHolderStrip,
 } from "./styled";
 
 const CardHolder = () => {
+  const [fetchedRates, setFetchedRates] = useState({});
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.currencyRates.loading);
-
-  const [fetchedRates, setFetchedRates] = useState({});
 
   const currencyRatesCache = "currencyRatesCache";
   const expirationTime = 6 * 60 * 60 * 1000;
@@ -65,9 +66,6 @@ const CardHolder = () => {
     }
   }, []);
 
-  const [selectedCurrency, setSelectedCurrency] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleOpenModal = (currency) => {
     setSelectedCurrency(currency);
     setIsModalOpen(true);
@@ -83,41 +81,37 @@ const CardHolder = () => {
       <CardHolderContainer data-cy="cardHolder">
         <CardHolderTextWrapper>
           <CardHolderText>Stocks</CardHolderText>
-          <CardHolderStrip />
         </CardHolderTextWrapper>
         <CardHolderWrapper>
           {stocksData.map((item) => {
-            const { id, path, text, color, rate } = item;
             return (
               <Card
-                key={id}
-                path={path}
-                text={text}
-                color={color}
-                rate={rate}
+                key={item.id}
+                path={item.path}
+                text={item.text}
+                color={item.color}
+                rate={item.rate}
               />
             );
           })}
         </CardHolderWrapper>
         <CardHolderTextWrapper>
           <CardHolderText>Quotes</CardHolderText>
-          <CardHolderStrip />
         </CardHolderTextWrapper>
         <CardHolderWrapper>
           {quotesData.map((item) => {
-            const { id, path, text, color, code } = item;
             return (
               <Card
-                key={id}
-                path={path}
-                text={text}
-                color={color}
+                key={item.id}
+                path={item.path}
+                text={item.text}
+                color={item.color}
                 rate={
                   loading
                     ? "Loading..."
-                    : `R$ ${fetchedRates[code]?.value.toFixed(5)}`
+                    : `R$ ${fetchedRates[item.code]?.value.toFixed(5)}`
                 }
-                onClick={() => handleOpenModal(code)}
+                onClick={() => handleOpenModal(item.code)}
               />
             );
           })}

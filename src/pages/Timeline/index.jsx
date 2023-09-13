@@ -1,21 +1,11 @@
 import React from "react";
 
-import {
-  Navbar,
-  Header,
-  LastUpdated,
-  CurrencyChart,
-  Footer,
-} from "@components";
+import { CurrencyChart } from "@components";
 
 const Timeline = () => {
   return (
     <>
-      <Navbar />
-      <Header />
-      <LastUpdated />
       <CurrencyChart />
-      <Footer />
     </>
   );
 };

@@ -12,7 +12,7 @@ export const SectionWrapper = styled.section`
     rgba(36, 121, 64, 0) 100%
   );
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1300px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@ export const TextWrapper = styled.div`
   background-color: transparent;
   margin-bottom: 20px;
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1300px) {
     text-align: right;
     margin-bottom: 0;
   }
@@ -67,7 +67,7 @@ export const Title = styled.p`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1300px) {
     width: auto;
   }
 `;
@@ -82,7 +82,7 @@ export const DiagramWrapper = styled.div`
     height: auto;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1300px) {
     width: 303.699px;
     height: 345.712px;
     margin-left: 30px;

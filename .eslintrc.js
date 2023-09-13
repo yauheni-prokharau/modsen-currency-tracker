@@ -12,5 +12,6 @@ module.exports = {
   plugins: ["react"],
   rules: {
     "no-undef": "off",
+    "arrow-body-style": ["error", "as-needed"],
   },
 };

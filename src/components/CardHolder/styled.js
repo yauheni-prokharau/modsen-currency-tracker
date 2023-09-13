@@ -12,8 +12,8 @@ export const CardHolderWrapper = styled.section`
   padding: 0px 120px;
   margin-bottom: 40px;
 
-  @media (max-width: 1600px) {
-    justify-content: center;
+  @media (max-width: 768px) {
+    padding: 0px;
   }
 `;
 
@@ -23,7 +23,7 @@ export const CardHolderTextWrapper = styled.div`
 `;
 
 export const CardHolderText = styled.p`
-  width: 123px;
+  width: 520px;
   height: 43px;
   color: ${({ theme }) => theme.color};
   font-size: 32px;
@@ -31,10 +31,17 @@ export const CardHolderText = styled.p`
   font-weight: 300;
   line-height: 41.143px;
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(71, 71, 71, 1);
+
+  @media (max-width: 768px) {
+    border-bottom: none;
+  }
 `;
 
 export const CardHolderStrip = styled.div`
   width: 520px;
-  height: 2.06px;
+  width: 10%;
+  height: 2px;
   background-color: rgba(71, 71, 71, 1);
 `;

@@ -4,7 +4,6 @@ const initialState = {
   rates: {},
   loading: false,
   error: null,
-  lastUpdated: null,
 };
 
 const currencyRatesSlice = createSlice({
@@ -24,17 +23,10 @@ const currencyRatesSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    setLastUpdated(state, action) {
-      state.lastUpdated = action.payload;
-    },
   },
 });
 
-export const {
-  fetchRatesStart,
-  fetchRatesSuccess,
-  fetchRatesFailure,
-  setLastUpdated,
-} = currencyRatesSlice.actions;
+export const { fetchRatesStart, fetchRatesSuccess, fetchRatesFailure } =
+  currencyRatesSlice.actions;
 
 export default currencyRatesSlice.reducer;

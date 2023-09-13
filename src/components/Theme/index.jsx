@@ -1,13 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import PropTypes from "prop-types";
 
-import { lightTheme, darkTheme } from "@theme";
+import { themes } from "@theme";
 import { Global } from "@components/App/styled";
+import { toggleTheme } from "@store/reducers/themeSlice";
 
 const Theme = ({ children }) => {
+  const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
-  const selectedTheme = theme === "light" ? lightTheme : darkTheme;
+
+  const selectedTheme = themes[theme];
+
+  useEffect(() => {
+    dispatch(toggleTheme());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={selectedTheme}>
@@ -15,6 +23,10 @@ const Theme = ({ children }) => {
       {children}
     </ThemeProvider>
   );
+};
+
+Theme.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Theme;

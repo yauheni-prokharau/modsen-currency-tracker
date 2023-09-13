@@ -2,8 +2,8 @@ import React from "react";
 
 import { Placeholder } from "@components";
 
-const Stub = () => {
+const Fallback = () => {
   return <Placeholder />;
 };
 
-export default Stub;
+export default Fallback;

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Chart } from "chart.js/auto";
 
-import { currencyData } from "@constants";
+import { currencyData } from "@constants/currency";
+import { chartObserver } from "@components";
 
 import {
   CurrencyButton,
@@ -9,6 +10,7 @@ import {
   ButtonWrapper,
   ButtonImage,
 } from "./styled";
+import { chartOptions, chartColors } from "./config";
 
 class CurrencyChart extends Component {
   constructor(props) {
@@ -23,8 +25,10 @@ class CurrencyChart extends Component {
     this.buildChart();
   }
 
-  componentDidUpdate() {
-    this.buildChart();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.selectedCurrencyIndex !== this.state.selectedCurrencyIndex) {
+      this.buildChart();
+    }
   }
 
   buildChart() {
@@ -39,50 +43,22 @@ class CurrencyChart extends Component {
           label: selectedCurrencyData.currency,
           data: data.map((item) => item.price),
           backgroundColor: data.map((item, index) => {
+            const { transparent, greenBackground, redBackground } = chartColors;
+
             if (index === 0) {
-              return "rgba(0, 0, 0, 0)";
+              return transparent;
             } else {
               const prevPrice = data[index - 1].price;
               const currentPrice = item.price;
               return currentPrice >= prevPrice
-                ? "rgba(42, 70, 40, 1)"
-                : "rgba(91, 44, 43, 1)";
+                ? greenBackground
+                : redBackground;
             }
           }),
           borderWidth: 1,
+          barThickness: 10,
         },
       ],
-    };
-
-    const chartOptions = {
-      responsive: true,
-      scales: {
-        x: {
-          grid: {
-            color: "rgba(137, 137, 137, 1)",
-            borderWidth: 1,
-          },
-          ticks: {
-            autoSkip: true,
-            maxTicksLimit: 10,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: "Day",
-          },
-        },
-        y: {
-          grid: {
-            color: "rgba(137, 137, 137, 1)",
-            borderWidth: 1,
-          },
-          beginAtZero: true,
-          scaleLabel: {
-            display: true,
-            labelString: "USD value",
-          },
-        },
-      },
     };
 
     const ctx = this.chartRef.current.getContext("2d");
@@ -96,11 +72,15 @@ class CurrencyChart extends Component {
       data: chartData,
       options: chartOptions,
     });
+
+    setTimeout(() => {
+      chartObserver.notify();
+    }, 100);
   }
 
-  handleCurrencyChange(index) {
+  handleCurrencyChange = (index) => {
     this.setState({ selectedCurrencyIndex: index });
-  }
+  };
 
   render() {
     return (

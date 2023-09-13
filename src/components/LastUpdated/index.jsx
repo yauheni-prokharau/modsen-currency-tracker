@@ -1,21 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 
 import circle from "@assets/images/circle.svg";
+import { formatTime } from "@utils";
 
 import { TimeWrapper, CircleWrapper, Text } from "./styled";
 
 const LastUpdated = () => {
-  const lastUpdated = useSelector((state) => state.currencyRates.lastUpdated);
+  const [lastUpdated, setLastUpdated] = useState(() => {
+    const storedLastUpdated = localStorage.getItem("lastUpdated");
 
-  const formatTime = (timestamp) => {
-    const options = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-    return new Date(timestamp).toLocaleTimeString([], options);
-  };
+    return storedLastUpdated ? new Date(storedLastUpdated) : new Date();
+  });
+
+  useEffect(() => {
+    localStorage.setItem("lastUpdated", lastUpdated.toISOString());
+  }, [lastUpdated]);
 
   return (
     <TimeWrapper data-cy="lastUpdated">

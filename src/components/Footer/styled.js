@@ -1,19 +1,42 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  max-width: 1600px;
+  max-width: 1300px;
   margin: 50px auto;
 `;
 
 export const FooterWrapper = styled.section`
   padding: 0px 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
-  @media (min-width: 1600px) {
+  @media (mix-width: 1300px) {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 120px;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+`;
+
+export const Item = styled.div`
+  width: 500px;
+
+  @media (max-width: 1300px) {
+    &:first-child {
+      margin-left: 100px;
+    }
+
+    &:last-child {
+      margin-right: 100px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    margin: 0 auto;
   }
 `;
 
@@ -43,7 +66,7 @@ export const DiagramWrapper = styled.div`
     -webkit-text-fill-color: transparent;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1300px) {
     margin-bottom: 0;
   }
 `;
@@ -67,7 +90,11 @@ export const LinksWrapper = styled.div`
   margin-top: 20px;
   text-align: center;
 
-  @media (min-width: 1600px) {
+  > div {
+    margin: 30px;
+  }
+
+  @media (min-width: 1300px) {
     flex-direction: row;
     gap: 0;
     margin-top: 0;

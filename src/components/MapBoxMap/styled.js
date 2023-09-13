@@ -42,6 +42,7 @@ export const StyledList = styled.ul`
   padding: 0;
   max-height: 200px;
   overflow-y: auto;
+  width: 450px;
 `;
 
 export const StyledListItem = styled.li`
@@ -54,4 +55,9 @@ export const StyledListItem = styled.li`
   &:last-child {
     border-bottom: none;
   }
+`;
+
+export const MapContainer = styled.div`
+  width: 100%;
+  height: 400px;
 `;

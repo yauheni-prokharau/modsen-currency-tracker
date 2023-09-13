@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { quotesData, bankData, defaultLocation } from "@constants";
+import { quotesData } from "@constants";
+import { bankData, defaultLocation } from "@constants/chart";
 import mapMarker from "@assets/images/mapMarker.svg";
 
 import {
@@ -11,6 +12,7 @@ import {
   StyledInput,
   StyledList,
   StyledListItem,
+  MapContainer,
 } from "./styled";
 
 class MapBoxMap extends Component {
@@ -23,9 +25,8 @@ class MapBoxMap extends Component {
       searchInput: "",
       searchResults: [],
       markers: [],
+      showNotFound: false,
     };
-
-    this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -54,14 +55,15 @@ class MapBoxMap extends Component {
 
     this.setState({
       searchResults: results,
+      showNotFound: results.length === 0 && searchInput.trim() !== "",
     });
   }
 
-  handleSearchInputChange(e) {
+  handleSearchInputChange = (e) => {
     const { value } = e.target;
     this.setState({ searchInput: value });
     this.searchQuotes(value);
-  }
+  };
 
   createMarkers(currency) {
     this.state.markers.forEach((marker) => marker.remove());
@@ -96,7 +98,7 @@ class MapBoxMap extends Component {
   }
 
   render() {
-    const { searchInput, searchResults } = this.state;
+    const { searchInput, searchResults, showNotFound } = this.state;
 
     return (
       <section data-cy="mapBoxMap">
@@ -109,25 +111,25 @@ class MapBoxMap extends Component {
             value={searchInput}
             onChange={this.handleSearchInputChange}
           />
-          {searchInput && (
+          {(searchInput || showNotFound) && (
             <StyledList>
-              {searchResults.map((result) => (
-                <StyledListItem
-                  key={result.id}
-                  onClick={() => this.createMarkers(result.code)}
-                  data-cy="targetCurrencyItem"
-                >
-                  {result.text} ({result.code})
-                </StyledListItem>
-              ))}
+              {showNotFound ? (
+                <StyledListItem>Not Found</StyledListItem>
+              ) : (
+                searchResults.map(({ id, code, text }) => (
+                  <StyledListItem
+                    key={id}
+                    onClick={() => this.createMarkers(code)}
+                    data-cy="targetCurrencyItem"
+                  >
+                    {text} ({code})
+                  </StyledListItem>
+                ))
+              )}
             </StyledList>
           )}
         </StyledInputContainer>
-        <div
-          ref={this.mapContainer}
-          className="map-container"
-          style={{ width: "100%", height: "400px" }}
-        />
+        <MapContainer ref={this.mapContainer} />
       </section>
     );
   }
