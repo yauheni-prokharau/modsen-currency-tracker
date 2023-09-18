@@ -16,20 +16,20 @@ export const PlaceholderWrapper = styled.div`
     );
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.transparent};
   }
 
   h2,
   p {
-    margin: 10px;
+    margin: ${({ theme }) => theme.pixels.px10};
   }
   a {
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: ${({ theme }) => theme.pixels.px2} solid transparent;
     transition: border-color 0.3s ease-in-out;
 
     &:hover {
-      border-color: rgba(137, 137, 137, 1);
+      border-color: ${({ theme }) => theme.colors.darkGrey};
     }
   }
 `;

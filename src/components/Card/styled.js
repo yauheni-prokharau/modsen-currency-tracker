@@ -2,62 +2,67 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 520px;
-  height: 152.5px;
-  padding: 30px 100px 30px 32px;
+  width: ${({ theme }) => theme.pixels.px520};
+  height: ${({ theme }) => theme.pixels.px150};
+  padding: ${({ theme }) => theme.pixels.px30}
+    ${({ theme }) => theme.pixels.px100} ${({ theme }) => theme.pixels.px30}
+    ${({ theme }) => theme.pixels.px30};
   align-items: center;
-  gap: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(71, 71, 71, 1);
+  gap: ${({ theme }) => theme.pixels.px30};
+  border-radius: ${({ theme }) => theme.pixels.px8};
+  border: ${({ theme }) => theme.pixels.px1} solid
+    ${({ theme }) => theme.colors.smoke};
   background: ${({ theme }) => theme.background};
-  margin: 20px;
+  margin: ${({ theme }) => theme.pixels.px20};
   cursor: pointer;
   transition:
     border-radius 0.2s,
     box-shadow 0.3s;
 
   &:hover {
-    border-radius: 15px;
-    box-shadow: 0 0 50px rgba(71, 71, 71, 0.5);
+    border-radius: ${({ theme }) => theme.pixels.px15};
+    box-shadow: ${({ theme }) => theme.pixels.px0}
+      ${({ theme }) => theme.pixels.px0} ${({ theme }) => theme.pixels.px50}
+      rgba(71, 71, 71, 0.5);
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${({ theme }) => theme.pixels.px1400}) {
     width: 100%;
   }
 `;
 
 export const Content = styled.div`
   display: block;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.transparent};
 `;
 
 export const Image = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
+  width: ${({ theme }) => theme.pixels.px80};
+  height: ${({ theme }) => theme.pixels.px80};
+  border-radius: ${({ theme }) => theme.pixels.px8};
   background-color: ${(props) => props.color};
 `;
 
 export const Text = styled.p`
-  width: 279px;
-  color: rgba(217, 217, 217, 1);
-  font-size: 35px;
+  width: ${({ theme }) => theme.pixels.px280};
+  color: ${({ theme }) => theme.colors.whiteSmoke};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 400;
-  line-height: 49.371px;
-  background-color: transparent;
+  line-height: 49px;
+  background-color: ${({ theme }) => theme.colors.transparent};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.pixels.px768}) {
     display: block;
   }
 `;
 
 export const Percent = styled.span`
-  width: 113.259px;
-  color: rgba(167, 178, 195, 1);
-  font-size: 32px;
+  width: ${({ theme }) => theme.pixels.px100};
+  color: ${({ theme }) => theme.colors.blueSmoke};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41.143px;
-  background-color: transparent;
+  line-height: 41px;
+  background-color: ${({ theme }) => theme.colors.transparent};
 `;

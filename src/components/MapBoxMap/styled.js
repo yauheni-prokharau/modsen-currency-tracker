@@ -9,24 +9,27 @@ export const StyledInputContainer = styled.div`
 
 export const StyledTitle = styled.h2`
   text-align: center;
-  font-size: 38px;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: ${({ theme }) => theme.pixels.px20};
 `;
 
 export const StyledInput = styled.input`
   background: rgba(27, 32, 40, 1);
-  width: 450px;
-  height: 65.5px;
-  padding: 10px;
-  padding-left: 20px;
-  border: 1px solid rgba(204, 204, 204, 1);
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
+  width: ${({ theme }) => theme.pixels.px450};
+  height: ${({ theme }) => theme.pixels.px65};
+  padding: ${({ theme }) => theme.pixels.px10};
+  padding-left: ${({ theme }) => theme.pixels.px20};
+  border: ${({ theme }) => theme.pixels.px1} solid
+    ${({ theme }) => theme.colors.lightGrey};
+  border-radius: ${({ theme }) => theme.pixels.px10};
+  box-shadow: ${({ theme }) => theme.pixels.px0}
+    ${({ theme }) => theme.pixels.px2} ${({ theme }) => theme.pixels.px4}
+    ${({ theme }) => theme.colors.darkGrey};
+  font-size: ${({ theme }) => theme.fontSizes.s};
   outline: none;
-  margin-bottom: 40px;
-  color: rgba(158, 158, 158, 1);
+  margin-bottom: ${({ theme }) => theme.pixels.px40};
+  color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
 export const StyledList = styled.ul`
@@ -35,21 +38,23 @@ export const StyledList = styled.ul`
   top: calc(80%);
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid rgba(204, 204, 204, 1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  border-radius: ${({ theme }) => theme.pixels.px4};
+  box-shadow: ${({ theme }) => theme.pixels.px0}
+    ${({ theme }) => theme.pixels.px2} ${({ theme }) => theme.pixels.px4}
+    ${({ theme }) => theme.colors.lightGrey};
   list-style: none;
-  padding: 0;
-  max-height: 200px;
+  padding: ${({ theme }) => theme.pixels.px0};
+  max-height: ${({ theme }) => theme.pixels.px200};
   overflow-y: auto;
-  width: 450px;
+  width: ${({ theme }) => theme.pixels.px450};
 `;
 
 export const StyledListItem = styled.li`
-  padding: 8px;
-  border-bottom: 1px solid rgba(204, 204, 204, 0.9);
-  background: rgba(27, 32, 40, 1);
-  color: rgba(158, 158, 158, 1);
+  padding: ${({ theme }) => theme.pixels.px8};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.darkGrey};
   cursor: pointer;
 
   &:last-child {
@@ -59,5 +64,5 @@ export const StyledListItem = styled.li`
 
 export const MapContainer = styled.div`
   width: 100%;
-  height: 400px;
+  height: ${({ theme }) => theme.pixels.px400};
 `;

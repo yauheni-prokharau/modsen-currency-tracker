@@ -6,7 +6,7 @@ export const ErrorBoundaryWrapper = styled.section`
   justify-content: center;
   height: 100vh;
   font-family: Poppins;
-  color: rgba(255, 255, 255, 1);
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const ErrorBoundaryMessage = styled.div`
@@ -14,12 +14,12 @@ export const ErrorBoundaryMessage = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
-  background-color: rgba(3, 3, 4, 1);
-  border: 1px solid rgb(124, 57, 187);
-  border-radius: 10px;
-  width: 300px;
-  height: 300px;
+  padding: ${({ theme }) => theme.pixels.px20};
+  background-color: ${({ theme }) => theme.colors.black};
+  border: 1px solid ${({ theme }) => theme.colors.purple};
+  border-radius: ${({ theme }) => theme.pixels.px10};
+  width: ${({ theme }) => theme.pixels.px300};
+  height: ${({ theme }) => theme.pixels.px300};
 
   h1,
   h2 {
@@ -31,6 +31,6 @@ export const ErrorBoundaryMessage = styled.div`
     );
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.transparent};
   }
 `;

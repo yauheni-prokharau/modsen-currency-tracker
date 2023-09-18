@@ -6,29 +6,31 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${({ theme }) => theme.colors.grey};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const ModalContent = styled.div`
-  background: rgba(32, 32, 37, 1);
-  padding: 50px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background:  ${({ theme }) => theme.colors.black};
+  padding: ${({ theme }) => theme.pixels.px50};
+  border-radius: ${({ theme }) => theme.pixels.px8};
+  box-shadow: ${({ theme }) => theme.pixels.px0} ${({ theme }) =>
+    theme.pixels.px2} ${({ theme }) => theme.pixels.px4} ${({ theme }) =>
+    theme.colors.grey};
   position: relative;
-  width: 600px; 
-  height: 340px;
+  width: ${({ theme }) => theme.pixels.px600}; 
+  height: ${({ theme }) => theme.pixels.px345};
 
-  color: rgba(255, 255, 255, 1);
+  color: ${({ theme }) => theme.colors.white};
 
   * {
-    margin: 10px;
-    padding: 10px;
-    background: rgba(32, 32, 37, 1);
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 1);
+    margin: ${({ theme }) => theme.pixels.px10};
+    padding: ${({ theme }) => theme.pixels.px10};
+    background: ${({ theme }) => theme.colors.black};
+    border-radius: ${({ theme }) => theme.pixels.px10};
+    color:  ${({ theme }) => theme.colors.white};
   }
 };`;
 
@@ -39,11 +41,11 @@ export const ModalCloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  color: rgba(217, 217, 217, 1);
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  color: ${({ theme }) => theme.colors.whiteSmoke};
   transition: color 0.2s;
 
   &:hover {
-    color: rgba(250, 250, 250, 1);
+    color: ${({ theme }) => theme.colors.whiteHover};
   }
 `;

@@ -7,6 +7,6 @@ export const ContactsWrapper = styled.section`
   flex-direction: column;
 
   p {
-    margin-bottom: 10px;
+    margin-bottom: ${({ theme }) => theme.pixels.px10};
   }
 `;

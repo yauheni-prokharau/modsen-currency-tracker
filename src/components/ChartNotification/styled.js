@@ -5,11 +5,11 @@ export const NotificationWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 128, 0, 0.7);
-  color: rgba(255, 255, 255, 1);
-  padding: 10px;
+  background-color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.pixels.px10};
   text-align: center;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
   transition: transform 0.3s ease-in-out;
   transform: translateY(${(props) => (props.show ? "0" : "-100%")});
   z-index: 999;

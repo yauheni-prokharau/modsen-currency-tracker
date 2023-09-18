@@ -18,15 +18,15 @@ export const TimeWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px 0px;
+  margin: ${({ theme }) => theme.pixels.px50} ${({ theme }) => theme.pixels.px0};
 `;
 
 export const Text = styled.p`
-  width: 417px;
-  height: 37px;
-  font-size: 32.914px;
+  width: ${({ theme }) => theme.pixels.px400};
+  height: ${({ theme }) => theme.pixels.px40};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41.143px;
-  margin-left: 10px;
+  line-height: 41px;
+  margin-left: ${({ theme }) => theme.pixels.px10};
 `;

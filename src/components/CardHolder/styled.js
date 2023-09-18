@@ -9,39 +9,41 @@ export const CardHolderWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0px 120px;
-  margin-bottom: 40px;
+  padding: ${({ theme }) => theme.pixels.px0}
+    ${({ theme }) => theme.pixels.px120};
+  margin-bottom: ${({ theme }) => theme.pixels.px40};
 
-  @media (max-width: 768px) {
-    padding: 0px;
+  @media (max-width: ${({ theme }) => theme.pixels.px768}) {
+    padding: ${({ theme }) => theme.pixels.px0};
   }
 `;
 
 export const CardHolderTextWrapper = styled.div`
-  margin-left: 150px;
-  margin-bottom: 20px;
+  margin-left: ${({ theme }) => theme.pixels.px150};
+  margin-bottom: ${({ theme }) => theme.pixels.px20};
 `;
 
 export const CardHolderText = styled.p`
   width: 520px;
-  height: 43px;
+  height: ${({ theme }) => theme.pixels.px40};
   color: ${({ theme }) => theme.color};
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41.143px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid rgba(71, 71, 71, 1);
+  line-height: 41px;
+  margin-bottom: ${({ theme }) => theme.pixels.px20};
+  padding-bottom: ${({ theme }) => theme.pixels.px20};
+  border-bottom: ${({ theme }) => theme.pixels.px2} solid
+    ${({ theme }) => theme.colors.smoke};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.pixels.px768}) {
     border-bottom: none;
   }
 `;
 
 export const CardHolderStrip = styled.div`
-  width: 520px;
+  width: ${({ theme }) => theme.pixels.px520};
   width: 10%;
-  height: 2px;
-  background-color: rgba(71, 71, 71, 1);
+  height: ${({ theme }) => theme.pixels.px2};
+  background-color: ${({ theme }) => theme.colors.smoke};
 `;
