@@ -84,15 +84,7 @@ const CardHolder = () => {
         </CardHolderTextWrapper>
         <CardHolderWrapper>
           {stocksData.map((item) => {
-            return (
-              <Card
-                key={item.id}
-                path={item.path}
-                text={item.text}
-                color={item.color}
-                rate={item.rate}
-              />
-            );
+            return <Card key={item.id} {...item} />;
           })}
         </CardHolderWrapper>
         <CardHolderTextWrapper>
@@ -103,9 +95,7 @@ const CardHolder = () => {
             return (
               <Card
                 key={item.id}
-                path={item.path}
-                text={item.text}
-                color={item.color}
+                {...item}
                 rate={
                   loading
                     ? "Loading..."

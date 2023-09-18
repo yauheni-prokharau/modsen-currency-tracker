@@ -14,11 +14,13 @@ export const LoaderWrapper = styled.div`
 `;
 
 export const Spinner = styled.div`
-  border: 4px solid rgba(255, 255, 255, 0.3);
+  border: ${({ theme }) => theme.pixels.px4} solid
+    ${({ theme }) => theme.colors.whiteLoader};
   border-radius: 50%;
-  border-top: 4px solid rgba(0, 206, 44, 1);
-  width: 50px;
-  height: 50px;
+  border-top: ${({ theme }) => theme.pixels.px4} solid
+    ${({ theme }) => theme.colors.lightGreen};
+  width: ${({ theme }) => theme.pixels.px50};
+  height: ${({ theme }) => theme.pixels.px50};
 
   animation: spin 1s linear infinite;
 
