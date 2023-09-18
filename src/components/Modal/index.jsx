@@ -50,16 +50,22 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
         </ModalCloseButton>
         <h2>Currency Converter 💱</h2>
         <p>From: {selectedCurrency}</p>
-        <select value={targetCurrency} onChange={handleCurrencyChange}>
+        <select
+          value={targetCurrency}
+          onChange={handleCurrencyChange}
+          data-cy="select"
+        >
           {Object.keys(exchangeRates).map((currencyCode) => (
             <option key={currencyCode} value={currencyCode}>
               {currencyCode}
             </option>
           ))}
         </select>
-        <button onClick={handleConvert}>Convert</button>
+        <button onClick={handleConvert} data-cy="button">
+          Convert
+        </button>
         {convertAmount !== null && (
-          <p>
+          <p data-cy="p">
             Converted value: {convertAmount} {targetCurrency}
           </p>
         )}

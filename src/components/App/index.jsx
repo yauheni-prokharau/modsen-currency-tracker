@@ -1,14 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import {
-  Theme,
-  Loader,
-  Navbar,
-  Header,
-  LastUpdated,
-  Footer,
-} from "@components";
+import { Loader, Navbar, Header, LastUpdated, Footer } from "@components";
 import { routesData } from "@constants/routes";
 
 const App = () => {
@@ -25,27 +18,25 @@ const App = () => {
   }, []);
 
   return (
-    <Theme>
-      <BrowserRouter>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <Navbar />
-            <Header />
-            <LastUpdated />
-            <Suspense fallback={<Loader />}>
-              <Routes>
-                {routesData.map(({ path, element }) => (
-                  <Route key={path} path={path} element={element} />
-                ))}
-              </Routes>
-            </Suspense>
-            <Footer />
-          </>
-        )}
-      </BrowserRouter>
-    </Theme>
+    <BrowserRouter>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar />
+          <Header />
+          <LastUpdated />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              {routesData.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+              ))}
+            </Routes>
+          </Suspense>
+          <Footer />
+        </>
+      )}
+    </BrowserRouter>
   );
 };
 

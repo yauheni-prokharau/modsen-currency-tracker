@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     "no-undef": "off",
     "arrow-body-style": ["error", "as-needed"],
+    "react/display-name": "off",
   },
 };

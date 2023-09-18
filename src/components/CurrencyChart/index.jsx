@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Chart } from "chart.js/auto";
 
 import { currencyData } from "@constants/currency";
-import { chartObserver } from "@components";
+import { chartObserver, ChartNotification } from "@components";
 
 import {
   CurrencyButton,
   ChartSection,
   ButtonWrapper,
   ButtonImage,
+  ModalContainer,
+  Modal,
 } from "./styled";
 import { chartOptions, chartColors } from "./config";
 
@@ -18,6 +20,8 @@ class CurrencyChart extends Component {
     this.chartRef = React.createRef();
     this.state = {
       selectedCurrencyIndex: 0,
+      showModal: false,
+      userInputData: [],
     };
   }
 
@@ -82,14 +86,43 @@ class CurrencyChart extends Component {
     this.setState({ selectedCurrencyIndex: index });
   };
 
+  openModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  closeModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleUserInput = (event) => {
+    const { name, value } = event.target;
+    const { userInputData } = this.state;
+    const newData = [...userInputData];
+    newData[parseInt(name)] = parseFloat(value);
+    this.setState({ userInputData: newData });
+  };
+
+  updateChartWithUserInput = () => {
+    const { userInputData } = this.state;
+    const chartData = this.chart.data.datasets[0];
+    chartData.data = userInputData;
+    this.chart.update();
+    this.closeModal();
+    chartObserver.notify();
+    this.setState({ userInputData: [] });
+  };
+
   render() {
+    const { showModal, userInputData } = this.state;
+
     return (
       <ChartSection data-cy="currencyChart">
+        <ChartNotification />
         <ButtonWrapper>
           {currencyData.map((currency, index) => (
             <CurrencyButton
               key={index}
-              onClick={() => this.handleCurrencyChange(index)}
+              onClick={this.handleCurrencyChange.bind(this, index)}
               data-cy="currencyButton"
             >
               <ButtonImage
@@ -100,8 +133,31 @@ class CurrencyChart extends Component {
               {currency.currency}
             </CurrencyButton>
           ))}
+          <CurrencyButton onClick={this.openModal}>
+            <span>🆕</span> Update Chart
+          </CurrencyButton>
         </ButtonWrapper>
         <canvas ref={this.chartRef} />
+
+        {showModal && (
+          <ModalContainer>
+            <Modal>
+              <h2>Enter 30 Prices</h2>
+              {Array.from({ length: 30 }, (_, index) => (
+                <input
+                  key={index}
+                  type="number"
+                  name={index}
+                  value={userInputData[index] || ""}
+                  onChange={this.handleUserInput}
+                  placeholder={`Price for Day ${index + 1}`}
+                />
+              ))}
+              <button onClick={this.updateChartWithUserInput}>Update</button>
+              <button onClick={this.closeModal}>Close ❌</button>
+            </Modal>
+          </ModalContainer>
+        )}
       </ChartSection>
     );
   }

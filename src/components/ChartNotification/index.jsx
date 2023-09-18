@@ -32,7 +32,7 @@ class ChartNotification extends Component {
 
     return (
       <NotificationWrapper show={showNotification}>
-        The graph has been successfully completed!
+        The graph has been successfully build!
       </NotificationWrapper>
     );
   }
