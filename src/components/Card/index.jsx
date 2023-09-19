@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Wrapper, Image, Content, Text, Percent } from "./styled";
 
 const Card = React.memo(({ path, text, color, rate, onClick }) => (
-  <Wrapper onClick={onClick} data-cy="card">
+  <Wrapper onClick={onClick} data-cy="card" data-testid="quoteCard">
     <Image src={path} alt={text} color={color}></Image>
     <Content>
       <Text>{text}</Text>

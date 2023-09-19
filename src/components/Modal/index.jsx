@@ -40,11 +40,16 @@ const Modal = ({ isOpen, onClose, selectedCurrency, exchangeRates }) => {
   }
 
   return ReactDOM.createPortal(
-    <ModalOverlay onClick={handleModalOverlayClick} data-cy="modal">
+    <ModalOverlay
+      onClick={handleModalOverlayClick}
+      data-cy="modal"
+      data-testid="modal"
+    >
       <ModalContent>
         <ModalCloseButton
           onClick={handleModalOverlayClick}
           data-cy="closeModal"
+          data-testid="closeModal"
         >
           Close ❌
         </ModalCloseButton>

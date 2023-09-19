@@ -78,6 +78,7 @@ class MapBoxMap extends Component {
         markerElement.style.backgroundColor = "transparent";
         markerElement.style.backgroundImage = `url(${mapMarker})`;
         markerElement.setAttribute("data-cy", "marker");
+        markerElement.setAttribute("data-testid", "marker");
 
         const newMarker = new mapboxgl.Marker({
           element: markerElement,

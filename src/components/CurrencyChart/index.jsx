@@ -116,7 +116,7 @@ class CurrencyChart extends Component {
     const { showModal, userInputData } = this.state;
 
     return (
-      <ChartSection data-cy="currencyChart">
+      <ChartSection data-cy="currencyChart" data-testid="currencyChart">
         <ChartNotification />
         <ButtonWrapper>
           {currencyData.map((currency, index) => (
@@ -124,6 +124,7 @@ class CurrencyChart extends Component {
               key={index}
               onClick={this.handleCurrencyChange.bind(this, index)}
               data-cy="currencyButton"
+              data-testid="currencyButton"
             >
               <ButtonImage
                 src={currency.path}
