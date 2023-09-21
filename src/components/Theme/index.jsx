@@ -14,7 +14,7 @@ const Theme = ({ children }) => {
   const selectedTheme = themes[theme];
 
   useEffect(() => {
-    dispatch(toggleTheme());
+    dispatch(toggleTheme(selectedTheme));
   }, []);
 
   return (
