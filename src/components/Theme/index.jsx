@@ -14,7 +14,9 @@ const Theme = ({ children }) => {
   const selectedTheme = themes[theme];
 
   useEffect(() => {
-    dispatch(toggleTheme(selectedTheme));
+    if (selectedTheme && selectedTheme !== localStorage.getItem("theme")) {
+      dispatch(toggleTheme(selectedTheme));
+    }
   }, []);
 
   return (
