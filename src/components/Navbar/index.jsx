@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -18,7 +18,17 @@ import {
 const Navbar = () => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const storedToggleValue = localStorage.getItem("themeToggle");
+    if (storedToggleValue) {
+      document.querySelector("#themeToggle").checked =
+        JSON.parse(storedToggleValue);
+    }
+  }, []);
+
   const handleThemeToggle = () => {
+    const isToggleChecked = document.querySelector("#themeToggle").checked;
+    localStorage.setItem("themeToggle", isToggleChecked);
     dispatch(toggleTheme());
   };
 
@@ -38,7 +48,11 @@ const Navbar = () => {
         })}
       </ListWrapper>
       <ToggleWrapper data-cy="toggleTheme">
-        <ToggleInput type="checkbox" onClick={handleThemeToggle} />
+        <ToggleInput
+          id="themeToggle"
+          type="checkbox"
+          onClick={handleThemeToggle}
+        />
         <ToggleSlider />
       </ToggleWrapper>
     </NavbarWrapper>
