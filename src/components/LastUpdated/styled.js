@@ -27,6 +27,6 @@ export const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41px;
+  line-height: ${({ theme }) => theme.pixels.px40};
   margin-left: ${({ theme }) => theme.pixels.px10};
 `;

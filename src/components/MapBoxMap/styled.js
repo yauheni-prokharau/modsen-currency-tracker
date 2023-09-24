@@ -30,6 +30,10 @@ export const StyledInput = styled.input`
   outline: none;
   margin-bottom: ${({ theme }) => theme.pixels.px40};
   color: ${({ theme }) => theme.colors.darkGrey};
+
+  @media (max-width: ${({ theme }) => theme.pixels.px450}) {
+    width: 100%;
+  }
 `;
 
 export const StyledList = styled.ul`
@@ -48,6 +52,10 @@ export const StyledList = styled.ul`
   max-height: ${({ theme }) => theme.pixels.px200};
   overflow-y: auto;
   width: ${({ theme }) => theme.pixels.px450};
+
+  @media (max-width: ${({ theme }) => theme.pixels.px450}) {
+    width: 100%;
+  }
 `;
 
 export const StyledListItem = styled.li`

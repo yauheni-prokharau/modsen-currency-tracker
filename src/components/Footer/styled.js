@@ -39,6 +39,15 @@ export const Item = styled.div`
 
   @media (max-width: ${({ theme }) => theme.pixels.px700}) {
     margin: ${({ theme }) => theme.pixels.px0} auto;
+    width: ${({ theme }) => theme.pixels.px300};
+
+    &:first-child {
+      margin: ${({ theme }) => theme.pixels.px0} auto;
+    }
+
+    &:last-child {
+      margin: ${({ theme }) => theme.pixels.px0} auto;
+    }
   }
 `;
 
@@ -137,8 +146,7 @@ export const SubLinks = styled.div`
   }
 `;
 
-export const FooterCopyright = styled.div`
-  width: ${({ theme }) => theme.pixels.px500};
+export const FooterCopyright = styled.p`
   height: ${({ theme }) => theme.pixels.px36};
   color: ${({ theme }) => theme.colors.darkGrey};
   font-size: ${({ theme }) => theme.fontSizes.m};

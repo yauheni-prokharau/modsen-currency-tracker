@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const CardHolderContainer = styled.section`
-  max-width: 1600px;
-  margin: 50px auto;
+  max-width: ${({ theme }) => theme.pixels.px1600};
+  margin: ${({ theme }) => theme.pixels.px50} auto;
 `;
 
 export const CardHolderWrapper = styled.section`
@@ -24,13 +24,13 @@ export const CardHolderTextWrapper = styled.div`
 `;
 
 export const CardHolderText = styled.p`
-  width: 520px;
+  width: ${({ theme }) => theme.pixels.px520};
   height: ${({ theme }) => theme.pixels.px40};
   color: ${({ theme }) => theme.color};
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41px;
+  line-height: ${({ theme }) => theme.pixels.px40};
   margin-bottom: ${({ theme }) => theme.pixels.px20};
   padding-bottom: ${({ theme }) => theme.pixels.px20};
   border-bottom: ${({ theme }) => theme.pixels.px2} solid
@@ -38,6 +38,7 @@ export const CardHolderText = styled.p`
 
   @media (max-width: ${({ theme }) => theme.pixels.px768}) {
     border-bottom: none;
+    width: 100%;
   }
 `;
 

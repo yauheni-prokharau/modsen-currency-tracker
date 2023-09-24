@@ -5,8 +5,7 @@ export const NavbarWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: ${({ theme }) => theme.pixels.px100};
-  padding: ${({ theme }) => theme.pixels.px0}
-    ${({ theme }) => theme.pixels.px100};
+  padding: ${({ theme }) => theme.pixels.px20};
 `;
 
 export const DiagramWrapper = styled.div`
@@ -21,6 +20,7 @@ export const ListWrapper = styled.ul`
   display: flex;
   justify-content: space-between;
   align-self: center;
+  flex-wrap: wrap;
   width: ${({ theme }) => theme.pixels.px657};
   list-style-type: none;
 

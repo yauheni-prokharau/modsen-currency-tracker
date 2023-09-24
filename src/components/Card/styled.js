@@ -29,6 +29,10 @@ export const Wrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.pixels.px1400}) {
     width: 100%;
   }
+
+  @media (max-width: ${({ theme }) => theme.pixels.px465}) {
+    padding: ${({ theme }) => theme.pixels.px10};
+  }
 `;
 
 export const Content = styled.div`
@@ -49,11 +53,12 @@ export const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 400;
-  line-height: 49px;
+  line-height: ${({ theme }) => theme.pixels.px50};
   background-color: ${({ theme }) => theme.colors.transparent};
 
   @media (max-width: ${({ theme }) => theme.pixels.px768}) {
     display: block;
+    width: ${({ theme }) => theme.pixels.px200};
   }
 `;
 
@@ -63,6 +68,6 @@ export const Percent = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-style: normal;
   font-weight: 300;
-  line-height: 41px;
+  line-height: ${({ theme }) => theme.pixels.px40};
   background-color: ${({ theme }) => theme.colors.transparent};
 `;
