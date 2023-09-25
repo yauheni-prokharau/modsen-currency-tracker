@@ -33,4 +33,5 @@ export const chartColors = {
   transparent: "rgba(0, 0, 0, 0)",
   greenBackground: "rgba(42, 70, 40, 1)",
   redBackground: "rgba(91, 44, 43, 1)",
+  darkGreyBackground: "rgba(137, 137, 137, 1)",
 };

@@ -45,7 +45,11 @@ class CurrencyChart extends Component {
       datasets: [
         {
           label: selectedCurrencyData.currency,
-          data: data.map((item) => item.price),
+          data: data.map((item, index) => {
+            const prevPrice = index === 0 ? item.price : data[index - 1].price;
+            const currentPrice = item.price;
+            return [prevPrice, currentPrice];
+          }),
           backgroundColor: data.map((item, index) => {
             const { transparent, greenBackground, redBackground } = chartColors;
 
@@ -59,8 +63,9 @@ class CurrencyChart extends Component {
                 : redBackground;
             }
           }),
-          borderWidth: 1,
-          barThickness: 10,
+          borderWidth: 2,
+          borderColor: chartColors.darkGreyBackground,
+          barThickness: 20,
         },
       ],
     };
@@ -71,10 +76,53 @@ class CurrencyChart extends Component {
       this.chart.destroy();
     }
 
+    const candlestick = {
+      id: "candlestick",
+      beforeDatasetsDraw(chart) {
+        const {
+          ctx,
+          data,
+          scales: { x, y },
+        } = chart;
+
+        ctx.save();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = chartColors.darkGreyBackground;
+
+        data.datasets[0].data.map((item, index) => {
+          const h = item[1] + item[1] * 0.05;
+          const l = item[0] - item[0] * 0.05;
+
+          ctx.beginPath();
+          ctx.moveTo(
+            chart.getDatasetMeta(0).data[index].x,
+            chart.getDatasetMeta(0).data[index].y
+          );
+          ctx.lineTo(
+            chart.getDatasetMeta(0).data[index].x,
+            y.getPixelForValue(h)
+          );
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(
+            chart.getDatasetMeta(0).data[index].x,
+            chart.getDatasetMeta(0).data[index].y
+          );
+          ctx.lineTo(
+            chart.getDatasetMeta(0).data[index].x,
+            y.getPixelForValue(l)
+          );
+          ctx.stroke();
+        });
+      },
+    };
+
     this.chart = new Chart(ctx, {
       type: "bar",
       data: chartData,
       options: chartOptions,
+      plugins: [candlestick],
     });
 
     setTimeout(() => {
@@ -98,17 +146,32 @@ class CurrencyChart extends Component {
     const { name, value } = event.target;
     const { userInputData } = this.state;
     const newData = [...userInputData];
+
     newData[parseInt(name)] = parseFloat(value);
+
     this.setState({ userInputData: newData });
   };
 
   updateChartWithUserInput = () => {
     const { userInputData } = this.state;
+    const selectedCurrencyData = currencyData[this.state.selectedCurrencyIndex];
+
+    const formattedData = userInputData.map((value, index) => {
+      const prevPrice = userInputData[index - 1]
+        ? userInputData[index - 1]
+        : selectedCurrencyData.data[0].price;
+
+      return [prevPrice, value];
+    });
+
     const chartData = this.chart.data.datasets[0];
-    chartData.data = userInputData;
+    chartData.data = formattedData;
+
     this.chart.update();
     this.closeModal();
+
     chartObserver.notify();
+
     this.setState({ userInputData: [] });
   };
 
